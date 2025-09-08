@@ -4,8 +4,8 @@ import LoadingState from "@/components/loading-state"
 const DashboardView = () => {
 
     return (
-        <div>
-            Dashboard View
+        <div className="flex min-h-screen items-center justify-center">
+            <h1 className="text-4xl font-bold">Dashboard</h1>
         </div>
     )
 }
