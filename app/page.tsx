@@ -26,10 +26,10 @@ const Home = () => {
 
   return (
     <>
-      <header className="fixed top-0 left-0 w-full flex items-center justify-between px-6 py-4 z-50">
+      <header className="fixed top-0 left-0 w-full flex items-center justify-between text-sm p-3 z-50">
         <div className="font-bold">Logo</div>
 
-        <nav className="flex items-center border px-8 py-4 rounded-full gap-6">
+        <nav className="flex items-center border px-5 py-3 rounded-full gap-6">
           {navitems.map((item) => (
             <a
               key={item.href}
@@ -41,7 +41,7 @@ const Home = () => {
         </nav>
 
         <Button asChild className="rounded-full">
-          <Link href="/dashboard">Dashboard</Link>
+          <Link href="/sign-in">Dashboard</Link>
         </Button>
       </header>
 

@@ -11,9 +11,21 @@ import {
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { Button } from "./ui/button"
+import { signOut } from "@/lib/auth-client"
+import { useRouter } from "next/navigation"
 
 const UserProfile = () => {
+    const router = useRouter();
 
+    const onSubmit = async () => {
+        await signOut({
+            fetchOptions: {
+                onSuccess: () => {
+                    router.push("/login");
+                },
+            },
+        });
+    }
     return (
         <DropdownMenu >
             <DropdownMenuTrigger className="flex items-center justify-center gap-2">
@@ -29,7 +41,7 @@ const UserProfile = () => {
                 <DropdownMenuItem>Billing</DropdownMenuItem>
                 <DropdownMenuItem>Team</DropdownMenuItem>
                 <DropdownMenuItem>
-                    <Button variant="destructive" className="w-full">
+                    <Button variant="destructive" onClick={() => onSubmit()} className="w-full">
                         Logout
                     </Button>
                 </DropdownMenuItem>
