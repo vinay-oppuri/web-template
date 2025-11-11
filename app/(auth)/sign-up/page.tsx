@@ -5,11 +5,11 @@ import { redirect } from "next/navigation"
 
 const Page = async () => {
 
-    const session = auth.api.getSession({
+    const session = await auth.api.getSession({
         headers: await headers()
     })
 
-    if(!!session) {
+    if (!!session) {
         redirect('/dashboard')
     }
 

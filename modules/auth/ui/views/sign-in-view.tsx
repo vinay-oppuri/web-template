@@ -125,7 +125,7 @@ const SignInView = () => {
 
                             <p className="text-center text-sm text-muted-foreground">
                                 Don&apos;t have an account?{' '}
-                                <Link href="/signup" className="underline text-blue-700">
+                                <Link href="/sign-up" className="underline text-blue-700">
                                     Sign Up
                                 </Link>
                             </p>

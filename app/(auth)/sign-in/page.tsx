@@ -5,13 +5,13 @@ import { redirect } from "next/navigation"
 
 const Page = async () => {
 
-    const session = auth.api.getSession({
-            headers: await headers()
-        })
-    auth
-        if(!!session) {
-            redirect('/dashboard')
-        }
+    const session = await auth.api.getSession({
+        headers: await headers()
+    })
+
+    if (!!session) {
+        redirect('/dashboard')
+    }
 
     return <SignInView />
 }

@@ -18,13 +18,12 @@ const UserProfile = () => {
     const router = useRouter();
 
     const onSubmit = async () => {
-        await signOut({
-            fetchOptions: {
-                onSuccess: () => {
-                    router.push("/login");
-                },
-            },
-        });
+        try {
+            await signOut()
+            router.push("/sign-in")
+        } catch (err) {
+            console.error("Sign-out failed:", err);
+        }
     }
     return (
         <DropdownMenu >

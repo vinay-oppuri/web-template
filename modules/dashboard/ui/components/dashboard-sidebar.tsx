@@ -9,10 +9,18 @@ import Image from "next/image"
 import { Separator } from "@/components/ui/separator"
 import { Button } from "@/components/ui/button"
 import { useTheme } from "next-themes"
+import { useEffect, useState } from "react"
 
 const DashboardSidebar = () => {
     const pathname = usePathname()
-    const {theme, setTheme} = useTheme()
+    const { theme, setTheme } = useTheme()
+    const [mounted, setMounted] = useState(false)
+
+    useEffect(() => setMounted(true), []);
+
+    if (!mounted) {
+        return null;
+    }
 
     const navitems = [
         { href: "/dashboard", name: "Home", icon: HomeIcon },
@@ -25,10 +33,10 @@ const DashboardSidebar = () => {
 
     return (
         // collapsible="icon" - collapsed view
-        <Sidebar> 
+        <Sidebar>
             <SidebarHeader>
                 <Link href="/" className="flex items-center justify-center p-10">
-                    <Image height={100} width={100} src="next.svg" alt="Logo" className="dark:invert"/>
+                    <Image height={100} width={100} src="next.svg" alt="Logo" className="dark:invert" />
                 </Link>
             </SidebarHeader>
             <SidebarContent>
@@ -44,7 +52,7 @@ const DashboardSidebar = () => {
                                     isActive={pathname === item.href}
                                 >
                                     <Link href={item.href} className="flex items-center justify-center gap-3">
-                                        <item.icon className="size-5"/>
+                                        <item.icon className="size-5" />
                                         <p>{item.name}</p>
                                     </Link>
                                 </SidebarMenuButton>
@@ -52,17 +60,17 @@ const DashboardSidebar = () => {
                         ))}
                     </SidebarMenu>
                 </SidebarGroup>
-                <Separator/>
+                <Separator />
                 <SidebarGroup className="flex flex-row items-center justify-between px-8">
                     <p>theme</p>
                     <Button variant="ghost" onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>
-                        {theme==="dark" ? <SunIcon className="text-yellow-300"/> : <MoonIcon className="text-blue-700"/> }
+                        {theme === "dark" ? <SunIcon className="text-yellow-300" /> : <MoonIcon className="text-blue-700" />}
                     </Button>
                 </SidebarGroup>
             </SidebarContent>
             <SidebarFooter className="m-1">
                 <div className="flex items-center gap-2 h-12 rounded-lg px-4 text-sm border border-transparent hover:bg-primary/10 hover:text-primary transition-all duration-300 hover:scale-105">
-                    <SettingsIcon className="size-5"/> <p>Settings</p>
+                    <SettingsIcon className="size-5" /> <p>Settings</p>
                 </div>
             </SidebarFooter>
         </Sidebar>

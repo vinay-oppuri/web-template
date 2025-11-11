@@ -9,13 +9,13 @@ import { ErrorBoundary } from "react-error-boundary"
 
 const Page = async () => {
 
-    const session = auth.api.getSession({
-            headers: await headers()
-        })
-    
-        if(!session) {
-            redirect('/sign-in')
-        }
+    const session = await auth.api.getSession({
+        headers: await headers()
+    })
+
+    if (!session) {
+        redirect('/sign-in')
+    }
 
     return (
         // <HydrationBoundary state={undefined}>
